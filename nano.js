@@ -19,6 +19,7 @@ var request     = require('request').defaults({ jar: false })
   , qs          = require('querystring')
   , u           = require('url')
   , errs        = require('errs')
+  , logger      = require('./logger')
   , follow
   , nano
   ;
@@ -1001,7 +1002,7 @@ module.exports = exports = nano = function database_module(cfg) {
   }
 
   // assuming a cfg.log inside cfg
-  logging    = require('./logger')(cfg);
+  logging    = logger(cfg);
 
   path       = u.parse(cfg.url);
   path_array = path.pathname.split('/').filter(function(e) { return e; });
